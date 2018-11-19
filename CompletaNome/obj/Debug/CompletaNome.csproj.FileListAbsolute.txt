@@ -1,0 +1,10 @@
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\CompletaNome.exe.config
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\CompletaNome.exe
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\CompletaNome.pdb
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\obj\Debug\CompletaNome.csprojAssemblyReference.cache
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\obj\Debug\CompletaNome.Form1.resources
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\obj\Debug\CompletaNome.Properties.Resources.resources
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\obj\Debug\CompletaNome.csproj.GenerateResource.cache
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\obj\Debug\CompletaNome.csproj.CoreCompileInputs.cache
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\obj\Debug\CompletaNome.exe
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\obj\Debug\CompletaNome.pdb
