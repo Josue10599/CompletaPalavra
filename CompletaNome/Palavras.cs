@@ -12,32 +12,59 @@ namespace CompletaNome
         private int idPalavra;
         private string palavra;
         private char caracterRemovido;
+        //private Banco banco;
+
+        public string Palavra { get => palavra; set => palavra = value; }
+        public int IdPalavra { get => idPalavra; set => idPalavra = value; }
+        public char CaracterRemovido { get => caracterRemovido; set => caracterRemovido = value; }
 
         public Palavras()
         {
+            IdPalavra = 1;
             palavra = "vermelho";
             palavra = palavra.ToUpper();
-            this.caracterRemovido = palavra[new Random().Next(palavra.Length)];
-        }
-        
-        public string getPalavra()
-        {
-            return palavra;
+            //pegaPalavra(IdPalavra);
+            removeCaracter(palavra);
         }
 
-        public char getCaracterRemovido()
+        //public string pegaPalavra(int idPalavra)
+        //{
+        //    if (idPalavra > 0)
+        //    {
+        //        Palavra = banco.getPalavra(idPalavra).ToUpper();
+        //        return Palavra;
+        //    }
+        //    else
+        //    {
+        //        return "";
+        //    }
+        //}
+
+        public void proximaPalavra()
         {
-            return this.caracterRemovido;
+            IdPalavra++;
+            //pegaPalavra(IdPalavra);
+            removeCaracter(Palavra);
+        }
+
+        private void removeCaracter(string palavra)
+        {
+            CaracterRemovido = palavra[new Random().Next(palavra.Length)];
         }
 
         public int numCaracter()
         {
-            return getPalavra().Length;
+            return Palavra.Length;
+        }
+
+        public string palavraIncompleta()
+        {
+            return palavra.Replace(CaracterRemovido, '_');
         }
 
         public string retornaCaracter(int posicao)
         {
-            return palavra[posicao].ToString();
+            return Palavra[posicao].ToString();
         }
 
         public ArrayList retornaCaracter()
@@ -49,11 +76,7 @@ namespace CompletaNome
                     caracter.Add(palavra[i]);
             }
             return caracter;
-        }
+        } 
 
-        public string palavraIncompleta()
-        {
-            return palavra.Replace(getCaracterRemovido(), '_');
-        }
     }
 }

@@ -18,6 +18,11 @@ namespace CompletaNome
         public Form1()
         {
             InitializeComponent();
+            atualizaDados();
+        }
+
+        private void atualizaDados()
+        {
             palavra = new Palavras();
             criaBotoes();
             label1.Text = palavra.palavraIncompleta();
@@ -27,13 +32,13 @@ namespace CompletaNome
         private void criaBotoes()
         {
             button = new Button[palavra.numCaracter()];
-            int i = 0, horizontal = 12;
+            int i = 0, horizontal = 2;
             foreach (var item in palavra.retornaCaracter())
             {
                 button[i] = new Button();
                 button[i].AutoSize = true;
-                button[i].Location = new System.Drawing.Point(horizontal, 266);            
-                button[i].Size = new System.Drawing.Size(75, 23);
+                button[i].Location = new System.Drawing.Point(horizontal, 6);            
+                button[i].Size = new System.Drawing.Size(75, 23);                
                 button[i].Name = "button" + i;
                 button[i].TabIndex = i;
                 button[i].Text = item.ToString();
@@ -41,8 +46,9 @@ namespace CompletaNome
                 button[i].Click += new System.EventHandler(this.button_Click);
                 button[i].Visible = true;
                 button[i].Enabled = true;
-                this.Controls.Add(button[i]);
-                horizontal += 81;
+                button[i].AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+                this.panel2.Controls.Add(this.button[i]);
+                horizontal += 30;
                 i++;
             }
         }
