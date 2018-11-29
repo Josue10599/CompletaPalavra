@@ -27,19 +27,30 @@ namespace CompletaNome
 
         private void criaBotoes()
         {
-            for (int i = 0, horizontal = 2; i < button.Length; i++, horizontal += 30)
+            for (int i = 0, horizontal = 2, vertical = 100; i < button.Length; i++)
             {
                 button[i] = new Button();
                 button[i].AutoSize = true;
-                button[i].Location = new System.Drawing.Point(horizontal, 6);
+                button[i].Location = new System.Drawing.Point(horizontal, vertical);
                 button[i].Size = new System.Drawing.Size(75, 23);
                 button[i].Name = "button" + i;
                 button[i].TabIndex = i;
                 button[i].UseVisualStyleBackColor = true;
                 button[i].Click += new System.EventHandler(this.button_Click);                
-                button[i].AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+                button[i].AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
                 button[i].KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.letraPressionada);
+                button[i].Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 this.panel2.Controls.Add(this.button[i]);
+                if (i == 9 || i == 19)
+                {
+                    vertical += 70;
+                    horizontal = 2;
+                }
+                else
+                {
+                    horizontal += 80;
+                }
+                    
             }
         }
 
@@ -47,6 +58,14 @@ namespace CompletaNome
         {
             bt.Visible = false;
             bt.Enabled = false;
+        }
+
+        private void desativaBotao()
+        {
+            foreach (var bt in button)
+            {
+                desativaBotao(bt);
+            }
         }
 
         private void ativaBotao(Button button, string txt)
@@ -62,16 +81,13 @@ namespace CompletaNome
             return letras[posicao].ToString();
         }
 
-        private void atualizaDados()
+        private bool atualizaDados()
         {
             lblCompleto.Text = palavra.Palavra;
             if (!lblCompleto.Text.Equals(""))
             {
                 lblIncompleto.Text = palavra.palavraIncompleta();
-                foreach (var bt in button)
-                {
-                    desativaBotao(bt);
-                }
+                desativaBotao();
                 for (int i = 0; i < palavra.retornaCaracter().Count; i++)
                 {
                     ativaBotao(button[i], palavra.retornaCaracter()[i].ToString());
@@ -88,11 +104,13 @@ namespace CompletaNome
                     }
                 }
                 button[0].Focus();
+                return true;
             }
             else
             {
                 MessageBox.Show(Form1.ActiveForm, "Fim de jogo", "Fim");
-                ActiveForm.Close();
+                this.Close();
+                return false;
             }            
         }
 
@@ -114,10 +132,12 @@ namespace CompletaNome
         private void jogada(string sender)
         {
             if (sender.Equals(palavra.CaracterRemovido.ToString()))
-            {
+            {                
                 MessageBox.Show("Parabéns");
+                this.Visible = false;
                 palavra.proximaPalavra();
-                atualizaDados();
+                if (atualizaDados())
+                    this.Visible = true;
             }
             else
             {
