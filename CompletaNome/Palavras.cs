@@ -12,7 +12,7 @@ namespace CompletaNome
         private int idPalavra;
         private string palavra;
         private char caracterRemovido;
-        //private Banco banco;
+        private Banco banco;
 
         public string Palavra { get => palavra; set => palavra = value; }
         public int IdPalavra { get => idPalavra; set => idPalavra = value; }
@@ -21,30 +21,31 @@ namespace CompletaNome
         public Palavras()
         {
             IdPalavra = 1;
-            palavra = "vermelho";
-            palavra = palavra.ToUpper();
-            //pegaPalavra(IdPalavra);
-            removeCaracter(palavra);
+            banco = new Banco("localhost", "3306", "bancopal", "root", "", "banpal");
+            if (pegaPalavra(IdPalavra).Equals(""))
+                new AccessBank(banco).Visible = true;
+            else
+                removeCaracter(palavra);
         }
 
-        //public string pegaPalavra(int idPalavra)
-        //{
-        //    if (idPalavra > 0)
-        //    {
-        //        Palavra = banco.getPalavra(idPalavra).ToUpper();
-        //        return Palavra;
-        //    }
-        //    else
-        //    {
-        //        return "";
-        //    }
-        //}
+        public string pegaPalavra(int idPalavra)
+        {
+            if (idPalavra > 0)
+            {
+                Palavra = banco.SourceWord(idPalavra.ToString()).ToUpper();
+                return Palavra;
+            }
+            else
+            {
+                return "";
+            }
+        }
 
         public void proximaPalavra()
         {
             IdPalavra++;
-            //pegaPalavra(IdPalavra);
-            removeCaracter(Palavra);
+            if (!pegaPalavra(IdPalavra).Equals(""))
+                removeCaracter(Palavra);
         }
 
         private void removeCaracter(string palavra)
