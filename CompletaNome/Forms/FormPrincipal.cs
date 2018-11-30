@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompletaNome.Forms;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,8 +22,17 @@ namespace CompletaNome
             InitializeComponent();
             button = new Button[30];
             palavra = new Palavras();
-            criaBotoes();
-            atualizaDados();
+            if (palavra.Palavra.Equals(""))
+            {
+                this.Enabled = false;
+                this.Visible = false;
+                new AccessBank(palavra.Banco, this).Visible = true;                
+            }
+            else
+            {
+                criaBotoes();
+                atualizaDados();
+            }    
         }
 
         private void criaBotoes()
@@ -126,18 +136,23 @@ namespace CompletaNome
 
         private void gerenciarPalavrasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AccessBank().Visible = true;
+            new AccessBank(palavra.Banco, this).Visible = true;
         }
 
         private void jogada(string sender)
         {
             if (sender.Equals(palavra.CaracterRemovido.ToString()))
             {                
-                MessageBox.Show("Parabéns");
+                FormAuxiliar formAuxiliar = new FormAuxiliar();
+                formAuxiliar.Show();
                 this.Visible = false;
+                MessageBox.Show("Parabéns");
                 palavra.proximaPalavra();
                 if (atualizaDados())
+                {
+                    formAuxiliar.Close();
                     this.Visible = true;
+                }
             }
             else
             {

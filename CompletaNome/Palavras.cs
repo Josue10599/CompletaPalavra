@@ -17,14 +17,13 @@ namespace CompletaNome
         public string Palavra { get => palavra; set => palavra = value; }
         public int IdPalavra { get => idPalavra; set => idPalavra = value; }
         public char CaracterRemovido { get => caracterRemovido; set => caracterRemovido = value; }
+        public Banco Banco { get => banco; }
 
         public Palavras()
         {
             IdPalavra = 1;
             banco = new Banco("localhost", "3306", "bancopal", "root", "", "banpal");
-            if (pegaPalavra(IdPalavra).Equals(""))
-                new AccessBank(banco).Visible = true;
-            else
+            if (!pegaPalavra(IdPalavra).Equals(""))
                 removeCaracter(palavra);
         }
 
@@ -50,7 +49,10 @@ namespace CompletaNome
 
         private void removeCaracter(string palavra)
         {
-            CaracterRemovido = palavra[new Random().Next(palavra.Length)];
+            do
+                CaracterRemovido = palavra[new Random().Next(palavra.Length)];
+            while (CaracterRemovido.ToString().Equals(" ") && CaracterRemovido.ToString().Equals("") 
+            && CaracterRemovido.ToString().Equals("-") && CaracterRemovido.ToString().Equals("_"));                         
         }
 
         public int numCaracter()

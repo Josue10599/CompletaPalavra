@@ -47,28 +47,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AccessBank.cs">
+    <Compile Include="Forms\FormGerenciaBanco.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AccessBank.Designer.cs">
-      <DependentUpon>AccessBank.cs</DependentUpon>
+    <Compile Include="Forms\FormGerenciaBanco.Designer.cs">
+      <DependentUpon>FormGerenciaBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Banco.cs" />
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAuxiliar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAuxiliar.Designer.cs">
+      <DependentUpon>FormAuxiliar.cs</DependentUpon>
     </Compile>
     <Compile Include="Palavras.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validate.cs" />
-    <EmbeddedResource Include="Forms\AccessBank.resx">
-      <DependentUpon>AccessBank.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormGerenciaBanco.resx">
+      <DependentUpon>FormGerenciaBanco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAuxiliar.resx">
+      <DependentUpon>FormAuxiliar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,6 +86,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,6 +103,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icon\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GifCarregando.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

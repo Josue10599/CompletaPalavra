@@ -13,9 +13,11 @@ namespace CompletaNome
 
     public partial class AccessBank : Form
     {
-        Banco banco;
-        Validate v = new Validate();
+        private Banco banco;
+        Form form;
         
+        public Object Banco { get => this.banco; }
+
         public AccessBank()
         {
             InitializeComponent();
@@ -23,14 +25,16 @@ namespace CompletaNome
             atualizaCampos();
         }
 
-        public AccessBank(Object banco)
+        public AccessBank(Object banco, Form form)
         {
             InitializeComponent();
             this.banco = (Banco)banco;
+            this.form = form;
+            form.Visible = false;
             atualizaCampos();
         }
 
-        private void atualizaCampos()
+        public void atualizaCampos()
         {
             list_id.Items.Clear();
             list_palavra.Items.Clear();
@@ -44,29 +48,48 @@ namespace CompletaNome
             }
             txt_palavra.Text = "";
             txt_id.Text = "";
+            atualizaBotoes();
+        }
+
+        private void atualizaBotoes()
+        {
+            if (txt_palavra.Text.Equals(""))
+            {
+                btn_Adicionar.Enabled = false;
+                btn_Atualizar.Enabled = false;
+                btn_Deletar.Enabled = false;
+            }
+            else if (list_palavra.Items.Contains(txt_palavra.Text))
+            {
+                txt_id.Text = (list_palavra.Items.IndexOf(txt_palavra.Text) + 1).ToString();
+                btn_Adicionar.Enabled = false;
+                btn_Atualizar.Enabled = true;
+                btn_Deletar.Enabled = true;
+            }
+            else
+            {
+                txt_id.Text = "";
+                btn_Adicionar.Enabled = true;
+                btn_Atualizar.Enabled = false;
+                btn_Deletar.Enabled = false;
+            }
         }
 
         private void btn_Adicionar_Click(object sender, EventArgs e)
         {            
-            v.ValidaVazio(txt_palavra,errorProvider1);
             banco.AddWord(txt_palavra.Text);
             atualizaCampos();
         }
       
         private void btn_Deletar_Click(object sender, EventArgs e)
         {
-            v.ValidaVazio(txt_id, errorProvider1);
-            v.ValidaVazio(txt_palavra, errorProvider1);
             banco.DeleteWord(txt_id.Text);
             atualizaCampos();
         }        
 
         private void btn_Atualizar_Click(object sender, EventArgs e)
         {
-            v.ValidaVazio(txt_id, errorProvider1);
-            v.ValidaVazio(txt_palavra, errorProvider1);
-            banco.UpdateWord(txt_palavra.Text,txt_id.Text);
-            atualizaCampos();
+            new Forms.FormAuxiliar(txt_palavra.Text, this).ShowDialog();           
         }
 
         private void listBox2_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -78,38 +101,36 @@ namespace CompletaNome
             txt_id.Text = list_id.SelectedItem.ToString();
         }
 
-        private void txt_insira_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AddBanco_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void txt_insira_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsLetter(e.KeyChar) || char.IsSymbol(e.KeyChar)||char.IsSeparator(e.KeyChar)||char.IsControl(e.KeyChar))
+            if(char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;
-  
+                e.Handled = true;  
             }
+            if (e.KeyChar == (char)ConsoleKey.Enter)
+            {
+                if (btn_Adicionar.Enabled)
+                {
+                    btn_Adicionar.Focus();
+                    btn_Adicionar.Select();
+                }
+                else
+                {
+                    btn_Atualizar.Focus();
+                    btn_Atualizar.Select();
+                } 
+            }               
         }
 
-        private void txt_CODPAL_TextChanged(object sender, EventArgs e)
+        private void carregaForm(object sender, FormClosedEventArgs e)
         {
-
+            form.Enabled = true;
+            form.Visible = true;                        
         }
 
-        private void btn_Adicionar_MouseMove(object sender, MouseEventArgs e)
+        private void txt_palavra_TextChanged(object sender, EventArgs e)
         {
-           
-        }
-
-        private void btn_Adicionar_MouseUp(object sender, MouseEventArgs e)
-        {
-
-        }
+            atualizaBotoes();
+        }        
     }
 }

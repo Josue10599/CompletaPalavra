@@ -120,13 +120,14 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(544, 402);
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Complete a Palavra";
-            this.TopMost = true;
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.letraPressionada);
             this.panel2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
