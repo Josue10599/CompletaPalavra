@@ -63,9 +63,29 @@ namespace CompletaNome.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GifCarregando {
+        internal static System.Drawing.Bitmap database_refresh {
             get {
-                object obj = ResourceManager.GetObject("GifCarregando", resourceCulture);
+                object obj = ResourceManager.GetObject("database_refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap databaseRemove {
+            get {
+                object obj = ResourceManager.GetObject("databaseRemove", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap databaseUpgrade {
+            get {
+                object obj = ResourceManager.GetObject("databaseUpgrade", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,0 +1,11 @@
+CREATE DATABASE bancopal IF NOT EXISTS;
+
+USE bancopal;
+
+DROP TABLE banpal IF EXISTS;
+
+CREATE TABLE banpal (
+    cod INT NOT NULL AUTO_INCREMENT,
+    pal VARCHAR(250),
+    KEY(cod)
+);

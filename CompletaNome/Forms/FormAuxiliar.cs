@@ -25,13 +25,29 @@ namespace CompletaNome.Forms
             this.palavraNaoModificada = texto;
             this.palavraModificada = texto;
             txbPalavra.Text = texto;
-            pnlImagem.Hide();
+            pnlImagem.Visible = false;
+            pnlImagem.Hide();            
         }
 
-        public FormAuxiliar()
+        public FormAuxiliar(int tela)
         {
-            InitializeComponent();
-            pnlTexto.Hide();
+            if (tela > 0)
+            {
+                InitializeComponent();
+                pnlTexto.Visible = false;
+                pnlTexto.Hide();
+                pnlImagem.Dock = System.Windows.Forms.DockStyle.Fill;
+                imagem.Image = Image.FromFile("../../Resources/" + (new Random().Next(2) + 2) + ".gif");
+            }
+            else
+            {
+                InitializeComponent();
+                pnlTexto.Visible = false;
+                pnlTexto.Hide();
+                pnlImagem.Dock = System.Windows.Forms.DockStyle.Fill;
+                imagem.Image = Image.FromFile("../../Resources/1.gif");
+                btnContinuar.Text = "Fim de Jogo";
+            }
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -46,6 +62,11 @@ namespace CompletaNome.Forms
         {
             formPai.atualizaCampos();
             this.Close();
-        }     
+        }   
+        
+        private void btnContinuar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

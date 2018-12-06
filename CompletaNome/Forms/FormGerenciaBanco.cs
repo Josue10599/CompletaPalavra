@@ -103,6 +103,10 @@ namespace CompletaNome
 
         private void txt_insira_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (txt_palavra.TextLength == 0 && e.KeyChar == (char)Keys.Space)
+            {
+                e.Handled = true;
+            }
             if(char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;  
@@ -131,6 +135,7 @@ namespace CompletaNome
         private void txt_palavra_TextChanged(object sender, EventArgs e)
         {
             atualizaBotoes();
+            contagem.Text = txt_palavra.TextLength.ToString() + "/250";
         }        
     }
 }

@@ -47,9 +47,9 @@
             this.lblIncompleto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIncompleto.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIncompleto.Location = new System.Drawing.Point(0, 32);
+            this.lblIncompleto.Location = new System.Drawing.Point(0, 41);
             this.lblIncompleto.Name = "lblIncompleto";
-            this.lblIncompleto.Size = new System.Drawing.Size(547, 40);
+            this.lblIncompleto.Size = new System.Drawing.Size(544, 40);
             this.lblIncompleto.TabIndex = 0;
             this.lblIncompleto.Text = "Palavra Incompleta";
             this.lblIncompleto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -59,9 +59,9 @@
             this.lblCompleto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCompleto.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompleto.Location = new System.Drawing.Point(3, -8);
+            this.lblCompleto.Location = new System.Drawing.Point(3, 3);
             this.lblCompleto.Name = "lblCompleto";
-            this.lblCompleto.Size = new System.Drawing.Size(544, 40);
+            this.lblCompleto.Size = new System.Drawing.Size(544, 38);
             this.lblCompleto.TabIndex = 1;
             this.lblCompleto.Text = "Palavra Completa";
             this.lblCompleto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -73,9 +73,9 @@
             this.panel2.Controls.Add(this.lblIncompleto);
             this.panel2.Controls.Add(this.lblCompleto);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 32);
+            this.panel2.Location = new System.Drawing.Point(0, 29);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(544, 370);
+            this.panel2.Size = new System.Drawing.Size(544, 373);
             this.panel2.TabIndex = 3;
             // 
             // contextMenuStrip1
@@ -98,7 +98,7 @@
             this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(544, 32);
+            this.label1.Size = new System.Drawing.Size(544, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "Complete a palavra abaixo:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,7 +110,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(544, 32);
+            this.panel1.Size = new System.Drawing.Size(544, 29);
             this.panel1.TabIndex = 2;
             // 
             // Form1

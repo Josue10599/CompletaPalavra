@@ -14,7 +14,7 @@ namespace CompletaNome
         private char caracterRemovido;
         private Banco banco;
 
-        public string Palavra { get => palavra; set => palavra = value; }
+        public string Palavra { get => this.palavra; set => palavra = value; }
         public int IdPalavra { get => idPalavra; set => idPalavra = value; }
         public char CaracterRemovido { get => caracterRemovido; set => caracterRemovido = value; }
         public Banco Banco { get => banco; }
@@ -49,10 +49,11 @@ namespace CompletaNome
 
         private void removeCaracter(string palavra)
         {
-            do
+            CaracterRemovido = '!';
+            while (!char.IsLetter(CaracterRemovido))
+            {
                 CaracterRemovido = palavra[new Random().Next(palavra.Length)];
-            while (CaracterRemovido.ToString().Equals(" ") && CaracterRemovido.ToString().Equals("") 
-            && CaracterRemovido.ToString().Equals("-") && CaracterRemovido.ToString().Equals("_"));                         
+            }                
         }
 
         public int numCaracter()
@@ -75,7 +76,7 @@ namespace CompletaNome
             ArrayList caracter = new ArrayList();
             for(int i = 0; i < palavra.Length; i++)
             {
-                if (!caracter.Contains(palavra[i]))
+                if (!caracter.Contains(palavra[i]) && char.IsLetter(palavra[i]))
                     caracter.Add(palavra[i]);
             }
             return caracter;

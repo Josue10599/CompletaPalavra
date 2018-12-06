@@ -22,15 +22,17 @@ namespace CompletaNome
             InitializeComponent();
             button = new Button[30];
             palavra = new Palavras();
+            criaBotoes();
             if (palavra.Palavra.Equals(""))
             {
-                this.Enabled = false;
                 this.Visible = false;
-                new AccessBank(palavra.Banco, this).Visible = true;                
+                this.Enabled = false;
+                new AccessBank(palavra.Banco, this).ShowDialog();
+                palavra = new Palavras();
+                atualizaDados();
             }
             else
             {
-                criaBotoes();
                 atualizaDados();
             }    
         }
@@ -117,8 +119,8 @@ namespace CompletaNome
                 return true;
             }
             else
-            {
-                MessageBox.Show(Form1.ActiveForm, "Fim de jogo", "Fim");
+            {                
+                new FormAuxiliar(0).ShowDialog();
                 this.Close();
                 return false;
             }            
@@ -143,10 +145,9 @@ namespace CompletaNome
         {
             if (sender.Equals(palavra.CaracterRemovido.ToString()))
             {                
-                FormAuxiliar formAuxiliar = new FormAuxiliar();
-                formAuxiliar.Show();
+                FormAuxiliar formAuxiliar = new FormAuxiliar(1);
                 this.Visible = false;
-                MessageBox.Show("Parabéns");
+                formAuxiliar.ShowDialog();              
                 palavra.proximaPalavra();
                 if (atualizaDados())
                 {
