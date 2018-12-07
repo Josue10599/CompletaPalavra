@@ -35,8 +35,8 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.lblInformativo = new System.Windows.Forms.Label();
             this.pnlImagem = new System.Windows.Forms.Panel();
-            this.imagem = new System.Windows.Forms.PictureBox();
             this.btnContinuar = new System.Windows.Forms.Button();
+            this.imagem = new System.Windows.Forms.PictureBox();
             this.pnlTexto.SuspendLayout();
             this.pnlImagem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imagem)).BeginInit();
@@ -111,19 +111,6 @@
             this.pnlImagem.Size = new System.Drawing.Size(96, 148);
             this.pnlImagem.TabIndex = 3;
             // 
-            // imagem
-            // 
-            this.imagem.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.imagem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imagem.Image = ((System.Drawing.Image)(resources.GetObject("imagem.Image")));
-            this.imagem.Location = new System.Drawing.Point(0, 0);
-            this.imagem.MinimumSize = new System.Drawing.Size(90, 100);
-            this.imagem.Name = "imagem";
-            this.imagem.Size = new System.Drawing.Size(96, 148);
-            this.imagem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imagem.TabIndex = 1;
-            this.imagem.TabStop = false;
-            // 
             // btnContinuar
             // 
             this.btnContinuar.AutoSize = true;
@@ -138,6 +125,19 @@
             this.btnContinuar.UseVisualStyleBackColor = true;
             this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
             // 
+            // imagem
+            // 
+            this.imagem.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.imagem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imagem.Image = ((System.Drawing.Image)(resources.GetObject("imagem.Image")));
+            this.imagem.Location = new System.Drawing.Point(0, 0);
+            this.imagem.MinimumSize = new System.Drawing.Size(90, 100);
+            this.imagem.Name = "imagem";
+            this.imagem.Size = new System.Drawing.Size(96, 148);
+            this.imagem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imagem.TabIndex = 1;
+            this.imagem.TabStop = false;
+            // 
             // FormAuxiliar
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -148,6 +148,7 @@
             this.Controls.Add(this.pnlImagem);
             this.Controls.Add(this.pnlTexto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(96, 148);
