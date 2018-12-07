@@ -48,7 +48,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbPalavra.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPalavra.Location = new System.Drawing.Point(74, 42);
-            this.txbPalavra.MaxLength = 30;
+            this.txbPalavra.MaxLength = 250;
             this.txbPalavra.Name = "txbPalavra";
             this.txbPalavra.Size = new System.Drawing.Size(482, 26);
             this.txbPalavra.TabIndex = 0;

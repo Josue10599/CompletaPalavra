@@ -21,7 +21,7 @@ namespace CompletaNome
         public AccessBank()
         {
             InitializeComponent();
-            this.banco = new Banco("localhost", "3306", "bancopal", "root", "", "banpal");
+            this.banco = new Banco();
             atualizaCampos();
         }
 
@@ -77,7 +77,7 @@ namespace CompletaNome
 
         private void btn_Adicionar_Click(object sender, EventArgs e)
         {            
-            banco.AddWord(txt_palavra.Text);
+            banco.AddWord((list_id.Items.Count + 1).ToString(),txt_palavra.Text);
             atualizaCampos();
         }
       

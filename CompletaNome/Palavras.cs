@@ -22,7 +22,7 @@ namespace CompletaNome
         public Palavras()
         {
             IdPalavra = 1;
-            banco = new Banco("localhost", "3306", "bancopal", "root", "", "banpal");
+            banco = new Banco();
             if (!pegaPalavra(IdPalavra).Equals(""))
                 removeCaracter(palavra);
         }

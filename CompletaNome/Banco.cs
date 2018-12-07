@@ -7,109 +7,142 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
+using System.IO;
 
 namespace CompletaNome
 {
     class Banco
     {
-        private MySqlConnection conn;
-        private MySqlCommand command;
-        private string server;
-        private string port;
-        private string database;
-        private string table;
-        private string usuario;
-        private string senha;
+        private SQLiteConnection conn;
+        private SQLiteCommand command;
+        private readonly string database;
+        private readonly string table;
 
-        public Banco(string server, string port, string database, string usuario, string senha, string table)
-        {
-            this.server = server;
-            this.port = port;
-            this.database = database;
-            this.usuario = usuario;
-            this.senha = senha;
-            this.table = table;
-            string connString = "server=" + server + "; " +
-                "port=" + port + "; database=" + database + "; User Id=" + usuario + "; " +
-                "password=" + senha + "; Allow User Variables = True; ";
-            conn = new MySqlConnection(connString);
-            command = conn.CreateCommand();
+        public Banco()
+        {            
+            database = "bancopal.db";
+            table = "banpal";
+            if (!File.Exists(database))
+            {
+                SQLiteConnection.CreateFile(database);
+                conn = new SQLiteConnection("Data Source=bancopal.db");
+                conn.Open();
+                
+                string sql ="CREATE TABLE IF NOT EXISTS " + table + " ( cod INT NOT NULL, pal VARCHAR(250) NOT NULL);";
+
+                command = new SQLiteCommand(sql, conn);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao criar o banco de dados: " + ex.Message);
+                    throw;
+                }
+                
+            }
+            else
+            {
+                try
+                {
+                    conn = new SQLiteConnection("Data Source=bancopal.db");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao conectar ao SQLite: " + ex.Message);
+                    throw;
+                }
+            }     
         }
 
         private void executaQuery(string query)
         {
-            conn.Open();
-            command.CommandText = query;
-            command.ExecuteNonQuery();
+            if (conn.State == System.Data.ConnectionState.Closed)
+                conn.Open();
+            command = new SQLiteCommand(query, conn);
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao executar comando : " + ex.Message);
+                throw;
+            }
+
             conn.Close();
         }
 
-        private void OrdenaCod()
+        private void OrdenaCod(string id_excluido)
         {
-            executaQuery("SET @count =0;  UPDATE `" + table + "` SET `" + table + "`.`cod` = @count:= @count +1");
+            executaQuery("UPDATE " + table + " SET cod = cod - 1 WHERE cod >" + id_excluido + ";");
         }
 
         public ArrayList LoadList(int coluna)
         {
             ArrayList valores = new ArrayList();
-            OrdenaCod();
-            conn.Open();
-            command.CommandText = "SELECT * FROM " + table +" ORDER BY cod ";
-            MySqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows)
+
+            if (conn.State == System.Data.ConnectionState.Closed)
+                conn.Open();
+            command = new SQLiteCommand("SELECT * FROM " + table + " ORDER BY cod", conn);
+            SQLiteDataReader reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                while (reader.Read())
-                {
-                    valores.Add(reader[coluna].ToString());
-                }
+                valores.Add(reader[coluna].ToString());
             }
+                
             conn.Close();
             return valores;
         }
 
-        public void DeleteWord(string id)
+        public void DeleteWord(string cod)
         {
-            if (id != "")
+            if (cod != "")
             {
-                executaQuery("DELETE FROM " + table + " WHERE cod =('" + id + "')");
+                executaQuery("DELETE FROM " + table + " WHERE cod =('" + cod + "')");
+                OrdenaCod(cod);
                 MessageBox.Show("Deletado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }            
         }
 
-        public void UpdateWord(string id, string palavra)
+        public void UpdateWord(string cod, string palavra)
         {
-            if (palavra != "" && id !="")
+            if (palavra != "" && cod !="")
             {
-                executaQuery("UPDATE " + table + " SET pal ='" + palavra + "' WHERE cod='" + id + "'");
+                executaQuery("UPDATE " + table + " SET pal ='" + palavra + "' WHERE cod='" + cod + "'");
                 MessageBox.Show("Atualizado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }              
         }
 
-        public void AddWord(string palavra)
-        {            
+        public void AddWord(string cod,string palavra)
+        {
             if (palavra != "")
             {
-                executaQuery("INSERT INTO " + table + " (pal) VALUES ('" + palavra + "')");
+                executaQuery("INSERT INTO " + table + " (cod, pal) VALUES ('" + cod + "','" + palavra + "')");
                 MessageBox.Show("Gravado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }            
+            }
         }
 
-        public String SourceWord(string id) {
+        public String SourceWord(string cod)
+        {
             string palavra = "";
             try
-            {                
-                conn.Open();               
-                command.CommandText = "SELECT pal FROM "+ table +" WHERE cod = "+id ;
-                MySqlDataReader reader = command.ExecuteReader();
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();               
+                command = new SQLiteCommand("SELECT pal FROM " + table +" WHERE cod = "+cod, conn);
+                SQLiteDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     palavra = reader["pal"].ToString();
                 }
                 conn.Close();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Falha na conexão");                
+                MessageBox.Show("Falha na conexão: " + ex.Message);                
             }
             return palavra;
         }

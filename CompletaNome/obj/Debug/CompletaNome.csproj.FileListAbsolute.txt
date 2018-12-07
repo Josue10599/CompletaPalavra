@@ -14,3 +14,12 @@ C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\Google.Protobuf.
 C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\MySql.Data.xml
 C:\Users\Josue\source\repos\CompletaNome\CompletaNome\obj\Debug\CompletaNome.csproj.CopyComplete
 C:\Users\Josue\source\repos\CompletaNome\CompletaNome\obj\Debug\CompletaNome.Forms.FormAuxiliar.resources
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\EntityFramework.dll
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\System.Data.SQLite.dll
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\EntityFramework.xml
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\System.Data.SQLite.xml
+C:\Users\Josue\source\repos\CompletaNome\CompletaNome\bin\Debug\System.Data.SQLite.dll.config
