@@ -37,7 +37,7 @@ namespace CompletaNome.Forms
                 pnlTexto.Visible = false;
                 pnlTexto.Hide();
                 pnlImagem.Dock = System.Windows.Forms.DockStyle.Fill;
-                imagem.Image = Image.FromFile("../../Resources/" + (new Random().Next(2) + 2) + ".gif");
+                imagem.Image = Image.FromFile("../../Resources/" + (new Random().Next(4) + 2) + ".gif");
             }
             else
             {
