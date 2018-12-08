@@ -5,7 +5,6 @@ USE bancopal;
 DROP TABLE banpal IF EXISTS;
 
 CREATE TABLE banpal (
-    cod INT NOT NULL AUTO_INCREMENT,
-    pal VARCHAR(250),
-    KEY(cod)
+    cod INT NOT NULL,
+    pal VARCHAR(250) NOT NULL,
 );
