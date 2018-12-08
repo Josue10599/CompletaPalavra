@@ -13,5 +13,5 @@
 </p>
 <br>
 <p>
-  <strong>Este trabalho tem fins aprendizagem!</strong>
+  <strong>Este trabalho tem fins de aprendizagem e de auxílio a quem está estudando!</strong>
 </p>
