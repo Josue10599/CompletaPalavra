@@ -16,8 +16,8 @@ namespace CompletaNome
     {
         private SQLiteConnection conn;
         private SQLiteCommand command;
-        private readonly string database;
-        private readonly string table;
+        private string database;
+        private string table;
 
         public Banco()
         {            
@@ -57,7 +57,7 @@ namespace CompletaNome
             }     
         }
 
-        private void executaQuery(string query)
+        private bool executaQuery(string query)
         {
             if (conn.State == System.Data.ConnectionState.Closed)
                 conn.Open();
@@ -65,14 +65,14 @@ namespace CompletaNome
             try
             {
                 command.ExecuteNonQuery();
+                return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao executar comando : " + ex.Message);
+                conn.Close();
+                MessageBox.Show("Erro ao executar comando: " + query + "\nMensagem de erro:"+ ex.Message);
                 throw;
             }
-
-            conn.Close();
         }
 
         private void OrdenaCod(string id_excluido)
@@ -101,9 +101,11 @@ namespace CompletaNome
         {
             if (cod != "")
             {
-                executaQuery("DELETE FROM " + table + " WHERE cod =('" + cod + "')");
-                OrdenaCod(cod);
-                MessageBox.Show("Deletado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (executaQuery("DELETE FROM " + table + " WHERE cod =('" + cod + "')"))
+                {
+                    OrdenaCod(cod);
+                    MessageBox.Show("Deletado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }            
         }
 
@@ -111,8 +113,8 @@ namespace CompletaNome
         {
             if (palavra != "" && cod !="")
             {
-                executaQuery("UPDATE " + table + " SET pal ='" + palavra + "' WHERE cod='" + cod + "'");
-                MessageBox.Show("Atualizado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(executaQuery("UPDATE " + table + " SET pal ='" + palavra + "' WHERE cod='" + cod + "'"))
+                    MessageBox.Show("Atualizado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }              
         }
 
@@ -120,8 +122,8 @@ namespace CompletaNome
         {
             if (palavra != "")
             {
-                executaQuery("INSERT INTO " + table + " (cod, pal) VALUES ('" + cod + "','" + palavra + "')");
-                MessageBox.Show("Gravado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(executaQuery("INSERT INTO " + table + " (cod, pal) VALUES ('" + cod + "','" + palavra + "')"))
+                    MessageBox.Show("Gravado com Sucesso!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -142,7 +144,7 @@ namespace CompletaNome
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha na conexão: " + ex.Message);                
+                MessageBox.Show("Falha ao buscar palavra: " + ex.Message);                
             }
             return palavra;
         }

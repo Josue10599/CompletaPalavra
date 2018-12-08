@@ -34,9 +34,10 @@
             this.lblCompleto = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.gerenciarPalavrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gerenciarPalavrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,16 +82,10 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gerenciarPalavrasToolStripMenuItem});
+            this.gerenciarPalavrasToolStripMenuItem,
+            this.sobreToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 26);
-            // 
-            // gerenciarPalavrasToolStripMenuItem
-            // 
-            this.gerenciarPalavrasToolStripMenuItem.Name = "gerenciarPalavrasToolStripMenuItem";
-            this.gerenciarPalavrasToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.gerenciarPalavrasToolStripMenuItem.Text = "Gerenciar Palavras";
-            this.gerenciarPalavrasToolStripMenuItem.Click += new System.EventHandler(this.gerenciarPalavrasToolStripMenuItem_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 48);
             // 
             // label1
             // 
@@ -113,6 +108,22 @@
             this.panel1.Size = new System.Drawing.Size(544, 29);
             this.panel1.TabIndex = 2;
             // 
+            // gerenciarPalavrasToolStripMenuItem
+            // 
+            this.gerenciarPalavrasToolStripMenuItem.Image = global::CompletaNome.Properties.Resources.database;
+            this.gerenciarPalavrasToolStripMenuItem.Name = "gerenciarPalavrasToolStripMenuItem";
+            this.gerenciarPalavrasToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.gerenciarPalavrasToolStripMenuItem.Text = "Gerenciar Palavras";
+            this.gerenciarPalavrasToolStripMenuItem.Click += new System.EventHandler(this.gerenciarPalavrasToolStripMenuItem_Click);
+            // 
+            // sobreToolStripMenuItem
+            // 
+            this.sobreToolStripMenuItem.Image = global::CompletaNome.Properties.Resources.information;
+            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.sobreToolStripMenuItem.Text = "Sobre";
+            this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,6 +135,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -146,6 +158,7 @@
         private System.Windows.Forms.ToolStripMenuItem gerenciarPalavrasToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
     }
 }
 

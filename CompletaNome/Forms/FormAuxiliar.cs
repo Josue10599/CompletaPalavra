@@ -68,5 +68,26 @@ namespace CompletaNome.Forms
         {
             this.Close();
         }
+
+        private void txbPalavra_TextChanged(object sender, EventArgs e)
+        {
+            label1.Text = txbPalavra.Text.Length + "/250";
+            if (txbPalavra.Text.Equals("") || txbPalavra.Text.Length == 0)
+            {
+                btnSalvar.Enabled = false;
+            }
+        }
+
+        private void txbPalavra_KeyPressed(object sender, KeyPressEventArgs e)
+        {
+            if (txbPalavra.TextLength == 0 && e.KeyChar == (char)Keys.Space)
+            {
+                e.Handled = true;
+            }
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

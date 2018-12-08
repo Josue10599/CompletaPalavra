@@ -27,9 +27,12 @@ namespace CompletaNome
             {
                 this.Visible = false;
                 this.Enabled = false;
-                new AccessBank(palavra.Banco, this).ShowDialog();
+                new AccessBank(palavra.Banco, this).ShowDialog();                
                 palavra = new Palavras();
-                atualizaDados();
+                if (!palavra.Palavra.Equals(""))
+                    atualizaDados();
+                else
+                    this.Close();
             }
             else
             {
@@ -159,6 +162,11 @@ namespace CompletaNome
             {
                 MessageBox.Show("Tente novamente!");
             }
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FormSobre().Show();
         }
     }
 }
